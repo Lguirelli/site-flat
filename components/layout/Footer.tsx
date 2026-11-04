@@ -1,13 +1,9 @@
 import Link from "next/link";
-import { accommodations } from "@/data/accommodations";
-import { mapsLink, navLinks, siteConfig } from "@/data/site-config";
+import { mapsLink, siteConfig } from "@/data/site-config";
 import { whatsappLink } from "@/lib/whatsapp";
 import { BookingButton } from "@/components/ui/BookingButton";
 
-/**
- * Fechamento da página: um convite com a ação de reserva, quatro blocos de
- * informação prática e o nome ocupando a largura toda.
- */
+/** Fechamento enxuto: reserva, endereço, horários, contato e o nome. */
 export function Footer() {
   const { address, contact, stay } = siteConfig;
   return (
@@ -15,12 +11,7 @@ export function Footer() {
       <div className="frame footer__top">
         <div className="footer__intro">
           <p className="footer__lead">Sete flats para dois em {address.city}, a menos de 1&nbsp;km do centro.</p>
-          <div className="footer__cta">
-            <BookingButton source="footer" variant="paper" icon="whatsapp" />
-            <a href={`tel:${contact.phone}`} className="link" data-cta="footer-phone">
-              {contact.whatsappDisplay}
-            </a>
-          </div>
+          <BookingButton source="footer" variant="paper" icon="whatsapp" />
         </div>
 
         <div className="footer__cols">
@@ -29,11 +20,9 @@ export function Footer() {
               Onde fica
             </h2>
             <address>
-              {address.street}
+              {address.street}, {address.neighborhood}
               <br />
-              {address.neighborhood}
-              <br />
-              {address.city}/{address.state} · {address.zip}
+              {address.city}/{address.state}
             </address>
             <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="link link--arrow" data-cta="footer-maps">
               Ver no mapa
@@ -53,10 +42,6 @@ export function Footer() {
                 <dt>Saída</dt>
                 <dd>{stay.checkOut}</dd>
               </div>
-              <div>
-                <dt>Silêncio</dt>
-                <dd>{stay.quietHours}</dd>
-              </div>
             </dl>
           </section>
 
@@ -67,7 +52,7 @@ export function Footer() {
             <ul>
               <li>
                 <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="link" data-cta="footer-whatsapp">
-                  WhatsApp
+                  {contact.whatsappDisplay}
                 </a>
               </li>
               <li>
@@ -75,47 +60,9 @@ export function Footer() {
                   Instagram
                 </a>
               </li>
-              <li>
-                <a href={`mailto:${contact.email}`} className="link">
-                  E-mail
-                </a>
-              </li>
             </ul>
           </section>
-
-          <nav aria-labelledby="ft-site">
-            <h2 id="ft-site" className="footer__h">
-              No site
-            </h2>
-            <ul>
-              {navLinks.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="link">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/politicas" className="link">
-                  Regras e cancelamento
-                </Link>
-              </li>
-            </ul>
-          </nav>
         </div>
-      </div>
-
-      <div className="frame footer__flats">
-        <h2 className="footer__h">Os flats</h2>
-        <ul>
-          {accommodations.map((a) => (
-            <li key={a.slug}>
-              <Link href={`/acomodacoes/${a.slug}`} className="footer__flat">
-                {a.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
       </div>
 
       <div className="frame footer__mark">
@@ -126,7 +73,10 @@ export function Footer() {
         </svg>
         <div className="footer__legal">
           <p>
-            © {new Date().getFullYear()} {siteConfig.name}. A consulta pelo WhatsApp não confirma a reserva.
+            © {new Date().getFullYear()} {siteConfig.name} ·{" "}
+            <Link href="/politicas" className="link">
+              Regras e cancelamento
+            </Link>
           </p>
           <a href="#conteudo" className="link">
             Voltar ao topo ↑

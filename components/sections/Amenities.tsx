@@ -54,7 +54,7 @@ export function Amenities() {
               <h3 data-r>{r.title}</h3>
               <p data-r>{r.text}</p>
               <figure className="incl__img shutter" data-r="img">
-                <Image src={r.img} alt={r.alt} fill sizes="(max-width: 760px) 90vw, 24vw" />
+                <Image src={r.img} alt={r.alt} fill sizes="(max-width: 760px) 92vw, 46vw" />
               </figure>
             </Reveal>
           ))}
