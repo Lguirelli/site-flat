@@ -135,7 +135,7 @@ export default async function FlatPage({ params }: { params: Promise<Params> }) 
           </div>
 
           <aside className="flat-body__aside" aria-label={`Consultar o ${flat.name}`}>
-            <BookingForm defaultFlat={flat.name} title={`Datas para o ${flat.name}`} />
+            <BookingForm defaultFlat={flat.name} title={`Datas para o ${flat.name}`} showFlats={false} />
           </aside>
         </div>
       </div>

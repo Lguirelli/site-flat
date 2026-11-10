@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { mapsLink, siteConfig } from "@/data/site-config";
-import { whatsappLink } from "@/lib/whatsapp";
+import { siteConfig } from "@/data/site-config";
 import { BookingButton } from "@/components/ui/BookingButton";
 
 /** Fechamento enxuto: reserva, endereço, horários, contato e o nome. */
@@ -11,7 +10,7 @@ export function Footer() {
       <div className="frame footer__top">
         <div className="footer__intro">
           <p className="footer__lead">Sete flats para dois em {address.city}, a menos de 1&nbsp;km do centro.</p>
-          <BookingButton source="footer" variant="paper" icon="whatsapp" />
+          <BookingButton source="footer" variant="paper" icon="calendar" />
         </div>
 
         <div className="footer__cols">
@@ -24,9 +23,6 @@ export function Footer() {
               <br />
               {address.city}/{address.state}
             </address>
-            <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="link link--arrow" data-cta="footer-maps">
-              Ver no mapa
-            </a>
           </section>
 
           <section aria-labelledby="ft-horarios">
@@ -50,16 +46,8 @@ export function Footer() {
               Contato
             </h2>
             <ul>
-              <li>
-                <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="link" data-cta="footer-whatsapp">
-                  {contact.whatsappDisplay}
-                </a>
-              </li>
-              <li>
-                <a href={contact.instagram} target="_blank" rel="noopener noreferrer" className="link">
-                  Instagram
-                </a>
-              </li>
+              <li>{contact.whatsappDisplay}</li>
+              <li>{contact.instagramHandle}</li>
             </ul>
           </section>
         </div>

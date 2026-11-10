@@ -73,7 +73,6 @@ const jsonLd = {
     addressCountry: "BR",
   },
   geo: { "@type": "GeoCoordinates", latitude: siteConfig.address.lat, longitude: siteConfig.address.lng },
-  sameAs: [siteConfig.contact.instagram],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

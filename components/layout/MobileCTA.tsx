@@ -25,7 +25,7 @@ export function MobileCTA({ flat }: { flat?: string }) {
 
   return (
     <div className={`mobile-cta ${visible ? "is-visible" : ""}`} aria-hidden={!visible} inert={!visible}>
-      <BookingButton source="mobile-bar" flat={flat} icon="whatsapp" block>
+      <BookingButton source="mobile-bar" flat={flat} icon="calendar" block>
         {flat ? `Consultar o ${flat}` : "Consultar datas"}
       </BookingButton>
     </div>

@@ -44,6 +44,7 @@
   --section: clamp(112px, 14vw, 220px);
   --header-h: 76px;
   --radius: 16px;
+  --max-w: 1600px;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -230,7 +231,10 @@ figure {
 
 /* 3. Frame e controles ------------------------------------ */
 .frame {
+  /* Largura máxima: em telas muito largas o conteúdo para de esticar e fica centralizado. */
   width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
   padding-inline: var(--margin);
 }
 
@@ -1891,19 +1895,365 @@ h1.flats__title {
   margin-top: 24px;
 }
 
-/* Formulário de datas */
+/* Formulário de datas: calendário, cartão da estadia e lista de flats */
 .booking {
+  container-type: inline-size;
   display: grid;
-  gap: 20px;
+  gap: 28px;
   color: var(--ink);
+}
+.booking__head {
+  display: grid;
+  gap: 10px;
+}
+.booking__trail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+.booking__trail::before {
+  content: "";
+  width: 6px;
+  height: 22px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+.booking__trail [aria-current] {
+  color: var(--accent);
+  font-weight: 500;
 }
 .booking__title {
   font-size: var(--step-title);
 }
-.booking__grid {
+.booking__layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 12px;
+  gap: 28px;
+}
+@container (min-width: 680px) {
+  .booking__layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: clamp(28px, 5cqi, 56px);
+    align-items: start;
+  }
+  .booking__layout--single {
+    grid-template-columns: 1fr;
+  }
+}
+.booking__dates {
+  display: grid;
+  gap: 20px;
+}
+
+.cal__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.cal__month {
+  font-family: var(--font-display);
+  font-size: var(--step-lead);
+}
+.cal__nav {
+  display: flex;
+  gap: 4px;
+}
+.cal__nav button {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color var(--t-hover) ease, transform var(--t-press) var(--ease-out);
+}
+.cal__nav button:disabled {
+  color: var(--off);
+  cursor: default;
+}
+.cal__nav button:not(:disabled):active {
+  transform: scale(0.94);
+}
+.cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  row-gap: 4px;
+  text-align: center;
+  isolation: isolate;
+}
+.cal__wd {
+  padding-block: 6px 10px;
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+.cal__day {
+  position: relative;
+  height: 44px;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.cal__day::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  border-radius: 50%;
+  z-index: -1;
+  transition: background-color var(--t-hover) ease, transform var(--t-press) var(--ease-out);
+}
+.cal__day[data-out] {
+  color: var(--muted);
+}
+.cal__day:disabled {
+  color: var(--off);
+  cursor: default;
+}
+.cal__day[data-today]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.cal__day {
+  isolation: isolate;
+}
+.cal__day[data-range] {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.cal__day[data-start]:has(~ [data-end]) {
+  background: linear-gradient(to right, transparent 50%, color-mix(in srgb, var(--accent) 18%, transparent) 50%);
+}
+.cal__day[data-end] {
+  background: linear-gradient(to left, transparent 50%, color-mix(in srgb, var(--accent) 18%, transparent) 50%);
+}
+.cal__day[data-start],
+.cal__day[data-end] {
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+.cal__day[data-start]::before,
+.cal__day[data-end]::before {
+  background: var(--accent);
+}
+.cal__day[data-start]::after,
+.cal__day[data-end]::after {
+  background: var(--accent-ink);
+}
+.cal__day:not(:disabled):active::before {
+  transform: scale(0.92);
+}
+.cal__day:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: var(--radius);
+}
+@media (hover: hover) and (pointer: fine) {
+  .cal__nav button:not(:disabled):hover {
+    background: var(--surface-2);
+  }
+  .cal__day:not(:disabled):not([data-start]):not([data-end]):hover::before {
+    background: var(--surface-2);
+  }
+}
+
+.booking__card {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.booking__card-title {
+  font-family: var(--font-display);
+  font-size: var(--step-lead);
+}
+.booking__range {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 8px 8px 8px 16px;
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.booking__range button {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--ink);
+  cursor: pointer;
+}
+.booking__range .icon {
+  width: 16px;
+  height: 16px;
+}
+.booking__guests {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.booking__guests-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: var(--accent-ink);
+  color: var(--accent);
+}
+.booking__guests-label {
+  flex: 1;
+  font-weight: 500;
+}
+.booking__guest {
+  width: 44px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--accent-ink) 45%, transparent);
+  border-radius: var(--radius);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color var(--t-hover) ease, transform var(--t-press) var(--ease-out);
+}
+.booking__guest[aria-checked="true"] {
+  background: var(--accent-ink);
+  color: var(--accent);
+  border-color: var(--accent-ink);
+}
+.booking__guest:active {
+  transform: scale(0.95);
+}
+
+.booking__flats {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.booking__flats legend {
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: var(--step-lead);
+}
+.booking__options {
+  display: grid;
+  gap: 8px;
+  max-height: 440px;
+  overflow-y: auto;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+  overscroll-behavior: contain;
+}
+.booking__option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 56px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--t-hover) ease, border-color var(--t-hover) ease;
+}
+.booking__option input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  appearance: none;
+  display: grid;
+  place-items: center;
+}
+.booking__option input::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: scale(0);
+  transition: transform var(--t-press) var(--ease-out);
+}
+.booking__option input:checked::after {
+  transform: scale(1);
+}
+.booking__option input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.booking__option span {
+  display: grid;
+  gap: 2px;
+}
+.booking__option small {
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+.booking__option:has(input:checked) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+.booking__option:has(input:checked) small {
+  color: inherit;
+  opacity: 0.8;
+}
+@media (hover: hover) and (pointer: fine) {
+  .booking__option:not(:has(input:checked)):hover {
+    background: var(--surface-2);
+  }
+}
+
+.booking__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px 28px;
+}
+.booking__actions .field__error {
+  margin-right: auto;
+}
+.booking__actions .link {
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+@container (max-width: 440px) {
+  .booking__actions .btn {
+    width: 100%;
+  }
 }
 .field {
   display: grid;
@@ -1953,14 +2303,9 @@ h1.flats__title {
   font-size: var(--step-small);
   color: var(--danger);
 }
-.booking__nights {
-  font-size: var(--step-small);
-  color: var(--accent);
-  min-height: 1.4em;
-  margin-top: -8px;
-}
 .booking__note {
   color: var(--muted);
+  font-size: var(--step-small);
 }
 
 /* 8. Diálogo e lightbox ----------------------------------- */
@@ -2000,6 +2345,9 @@ h1.flats__title {
   .sheet[open]::backdrop {
     background: rgb(10 12 11 / 0);
   }
+}
+.sheet--wide {
+  width: min(960px, calc(100% - 32px));
 }
 .sheet__body {
   position: relative;
@@ -2043,9 +2391,6 @@ h1.flats__title {
   }
   .sheet__body {
     padding: 28px 20px calc(24px + env(safe-area-inset-bottom));
-  }
-  .booking__grid {
-    gap: 14px 10px;
   }
 }
 

@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BookingButton } from "@/components/ui/BookingButton";
 import { faq } from "@/data/faq";
 import { siteConfig } from "@/data/site-config";
-import { whatsappLink } from "@/lib/whatsapp";
-import { Button } from "@/components/ui/Button";
 import { Lines } from "@/components/ui/Lines";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -44,14 +43,7 @@ export function FAQ() {
             ))}
           </div>
           <div className="faq__actions" data-r>
-            <Button
-              href={whatsappLink("Olá! Tenho uma dúvida sobre a hospedagem no Flat Jardim Serrano.")}
-              variant="ghost"
-              icon="whatsapp"
-              cta="faq-whatsapp"
-            >
-              Perguntar no WhatsApp
-            </Button>
+            <BookingButton source="faq" variant="ghost" icon="calendar" />
             <Link href="/politicas" className="link link--arrow">
               Regras e cancelamento
             </Link>

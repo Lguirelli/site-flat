@@ -22,12 +22,12 @@ export function ContactCTA() {
         <div className="last__copy">
           <Lines id="consulta-title" lines={["Conte as datas."]} />
           <p data-r>
-            Respondemos pelo WhatsApp com os flats livres e o valor do período. Pix com {payment.pixDiscount}% de desconto
+            Você recebe a resposta com os flats livres e o valor do período. Pix com {payment.pixDiscount}% de desconto
             ou cartão em até {payment.cardInstallments}x sem juros, e reembolso integral se desistir em até 7 dias da compra,
             antes do check-in.
           </p>
           <div data-r>
-            <BookingButton source="final" variant="paper" icon="whatsapp" />
+            <BookingButton source="final" variant="paper" icon="calendar" />
           </div>
         </div>
       </div>

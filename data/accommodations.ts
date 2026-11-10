@@ -178,7 +178,7 @@ export const accommodations: Accommodation[] = [
       "Varanda com vista panorâmica, cama king e Smart TV. Mini cozinha com frigobar, micro-ondas e cafeteira.",
     description: [
       "No Flat 5, a porta de vidro do quarto abre para a varanda, com cadeiras e vista panorâmica. O quarto tem cama king com enxoval completo, Smart TV e ventilador.",
-      "A mini cozinha tem frigobar, micro-ondas e cafeteira — o bastante para o café da manhã do seu jeito. O banheiro é privativo.",
+      "A mini cozinha tem frigobar, micro-ondas e cafeteira, o bastante para preparar o café da manhã do seu jeito. O banheiro é privativo.",
     ],
     capacity,
     keyFeatures: ["Varanda", "Vista panorâmica", "Cama king", "Smart TV"],
@@ -204,7 +204,7 @@ export const accommodations: Accommodation[] = [
       "Parede em madeira, cama king e arara para roupas. Varanda exclusiva com vista panorâmica e mini cozinha completa.",
     description: [
       "O Flat 6 combina parede em madeira, iluminação quente e cama king com enxoval completo. Tem Smart TV, ventilador e arara para organizar as roupas.",
-      "A mini cozinha conta com frigobar, micro-ondas, cafeteira e utensílios. A varanda exclusiva tem cadeiras e vista panorâmica — um bom lugar para o fim da tarde.",
+      "A mini cozinha tem frigobar, micro-ondas, cafeteira e utensílios. A varanda exclusiva tem cadeiras e vista para a serra, boa para o fim da tarde.",
     ],
     capacity,
     keyFeatures: ["Varanda exclusiva", "Vista panorâmica", "Cama king", "Mini cozinha equipada"],
@@ -236,7 +236,7 @@ export const accommodations: Accommodation[] = [
       "Cama king, cortinas blackout e Smart TV. Varanda com mesinha e cadeiras e vista panorâmica.",
     description: [
       "O Flat 7 tem cama king com enxoval completo, cortinas blackout para dormir até mais tarde, Smart TV e ventilador.",
-      "A varanda, com mesinha e cadeiras, tem vista panorâmica. A mini cozinha conta com frigobar, micro-ondas e cafeteira, e há arara para as roupas.",
+      "A varanda, com mesinha e cadeiras, tem vista panorâmica. A mini cozinha tem frigobar, micro-ondas e cafeteira, e há arara para as roupas.",
     ],
     capacity,
     keyFeatures: ["Varanda com mesinha", "Cortinas blackout", "Vista panorâmica", "Cama king"],
@@ -265,7 +265,7 @@ export const accommodations: Accommodation[] = [
       "Varanda exclusiva com vista para a montanha, cama king e mesa de jantar dentro do flat.",
     description: [
       "O Flat 8 tem cama king com enxoval completo, Smart TV, ventilador e mesa de jantar para fazer as refeições sem sair do flat.",
-      "A varanda exclusiva, com mesinha e cadeiras, tem vista para a montanha. A mini cozinha traz frigobar, micro-ondas, cafeteira e utensílios.",
+      "A varanda exclusiva, com mesinha e cadeiras, tem vista para a montanha. A mini cozinha tem frigobar, micro-ondas, cafeteira e utensílios.",
     ],
     capacity,
     keyFeatures: ["Vista para a montanha", "Varanda exclusiva", "Mesa de jantar", "Cama king"],

@@ -29,7 +29,7 @@ export function BookingDialog() {
   return (
     <dialog
       ref={ref}
-      className="sheet"
+      className="sheet sheet--wide"
       aria-label="Consultar datas"
       onClick={(e) => {
         if (e.target === e.currentTarget) close();
@@ -39,7 +39,7 @@ export function BookingDialog() {
         <button type="button" className="sheet__close" onClick={close} aria-label="Fechar">
           <Icon name="close" />
         </button>
-        <BookingForm defaultFlat={flat} title={flat ? `Datas para o ${flat}` : "Para quando?"} onSent={close} />
+        <BookingForm defaultFlat={flat} title={flat ? `Datas para o ${flat}` : "Escolha as datas"} onSent={close} onBack={close} />
       </div>
     </dialog>
   );

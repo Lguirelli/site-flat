@@ -1,14 +1,9 @@
 "use client";
 
-import { flatWhatsAppMessage, whatsappLink } from "@/lib/whatsapp";
 import { openBooking } from "@/lib/track";
 import { ButtonContent, buttonClass, type ButtonVariant } from "./Button";
 
-/**
- * A ação principal do site. É um link real para o WhatsApp (funciona sem JS e
- * com Ctrl+clique); com JS, abre antes o formulário de datas, que monta a
- * mensagem completa.
- */
+/** A ação principal do site: abre o formulário de datas. */
 export function BookingButton({
   children = "Consultar datas",
   flat,
@@ -24,24 +19,17 @@ export function BookingButton({
   variant?: ButtonVariant;
   block?: boolean;
   className?: string;
-  icon?: "whatsapp" | "arrow";
+  icon?: "calendar" | "arrow";
 }) {
-  const href = whatsappLink(flat ? flatWhatsAppMessage(flat) : undefined);
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+    <button
+      type="button"
       className={buttonClass(variant, block, className)}
       data-cta={source}
       aria-haspopup="dialog"
-      onClick={(e) => {
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-        e.preventDefault();
-        openBooking({ flat, source });
-      }}
+      onClick={() => openBooking({ flat, source })}
     >
       <ButtonContent icon={icon}>{children}</ButtonContent>
-    </a>
+    </button>
   );
 }

@@ -28,7 +28,6 @@ export const siteConfig = {
     whatsappDisplay: "(19) 99763-6911",
     phone: "+5519997636911",
     email: "janstainer@gmail.com",
-    instagram: "https://www.instagram.com/flat.jardimserrano/",
     instagramHandle: "@flat.jardimserrano",
   },
 
@@ -68,7 +67,6 @@ export const siteConfig = {
   },
 } as const;
 
-export const mapsLink = `https://www.google.com/maps?q=${siteConfig.address.lat},${siteConfig.address.lng}`;
 export const mapsEmbed = `https://www.google.com/maps?q=${siteConfig.address.lat},${siteConfig.address.lng}&z=16&output=embed`;
 
 export const navLinks = [

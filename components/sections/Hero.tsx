@@ -40,7 +40,7 @@ export function Hero() {
             centro.
           </p>
           <div className="hero__actions">
-            <BookingButton source="hero" icon="whatsapp" />
+            <BookingButton source="hero" icon="calendar" />
             <Link href="#acomodacoes" className="link link--arrow" data-cta="hero-flats">
               Ver os sete flats
             </Link>

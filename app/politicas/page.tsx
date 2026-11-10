@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { siteConfig } from "@/data/site-config";
-import { whatsappLink } from "@/lib/whatsapp";
-import { Button } from "@/components/ui/Button";
+import { BookingButton } from "@/components/ui/BookingButton";
 import { Lines } from "@/components/ui/Lines";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -100,14 +99,7 @@ export default function PoliticasPage() {
           </Reveal>
 
           <div className="prose__actions">
-            <Button
-              href={whatsappLink("Olá! Tenho uma dúvida sobre as políticas do Flat Jardim Serrano.")}
-              variant="accent"
-              icon="whatsapp"
-              cta="policies-whatsapp"
-            >
-              Tirar dúvida no WhatsApp
-            </Button>
+            <BookingButton source="policies" icon="calendar" />
           </div>
         </div>
       </div>

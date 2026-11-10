@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { mapsLink, siteConfig } from "@/data/site-config";
+import { siteConfig } from "@/data/site-config";
 import { BookingButton } from "@/components/ui/BookingButton";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -41,12 +41,7 @@ export function Location() {
             </div>
           </dl>
           <p className="visit__links" data-r>
-            <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="link link--arrow" data-cta="maps">
-              Abrir no Google Maps
-            </a>
-            <a href={`tel:${contact.phone}`} className="link" data-cta="phone">
-              {contact.whatsappDisplay}
-            </a>
+            <span>{contact.whatsappDisplay}</span>
           </p>
           <BookingButton source="visit-card" block className="visit__btn" />
         </Reveal>

@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import { accommodations, type AmenityId } from "@/data/accommodations";
-import { whatsappLink } from "@/lib/whatsapp";
 import { track } from "@/lib/track";
-import { Icon, WhatsAppIcon } from "@/components/ui/Icon";
+import { Icon } from "@/components/ui/Icon";
+import { BookingButton } from "@/components/ui/BookingButton";
 
 /** Itens que variam entre os flats: são eles que ajudam a escolher. */
 const wishes: { id: AmenityId; label: string }[] = [
@@ -61,11 +61,6 @@ export function FlatFinder() {
   const names = matches.map((m) => m.name);
   const wishLabels = wishes.filter((w) => selected.includes(w.id)).map((w) => w.label.toLowerCase());
   const label = matches.length ? flatsLabel(matches) : "";
-  const message = names.length
-    ? `Olá! Procuro um flat com ${joinNames(wishLabels)}. Quero consultar disponibilidade ${
-        names.length === 1 ? `do ${label}` : `dos ${label}`
-      }.`
-    : undefined;
 
   const current = accommodations.find((a) => a.slug === active)!;
 
@@ -141,16 +136,9 @@ export function FlatFinder() {
               <p>
                 {names.length === 1 ? `Só o ${label} tem` : `Os ${label} têm`} {joinNames(wishLabels)}.
               </p>
-              <a
-                href={whatsappLink(message)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn--accent"
-                data-cta="finder-whatsapp"
-              >
-                <WhatsAppIcon className="btn__icon" />
-                <span>{names.length === 1 ? `Consultar o ${names[0]}` : "Consultar esses flats"}</span>
-              </a>
+              <BookingButton source="finder" flat={names.length === 1 ? names[0] : undefined} icon="calendar">
+                {names.length === 1 ? `Consultar o ${names[0]}` : "Consultar esses flats"}
+              </BookingButton>
             </>
           ) : (
             <p>

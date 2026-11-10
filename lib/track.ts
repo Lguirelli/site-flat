@@ -5,7 +5,7 @@
  * Eventos emitidos pelo site:
  * - cta_click        clique em qualquer elemento com data-cta (rótulo em `cta`)
  * - booking_open     abertura do formulário de datas (`source`, `flat`)
- * - booking_submit   envio do formulário para o WhatsApp (`flat`, `nights`)
+ * - booking_submit   pedido de reserva enviado no formulário (`flat`, `nights`)
  * - flat_filter      uso do seletor de comodidades (`filters`, `matches`)
  */
 type Params = Record<string, string | number | undefined>;
