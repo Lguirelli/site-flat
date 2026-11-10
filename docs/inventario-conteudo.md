@@ -48,7 +48,7 @@ Não existe Flat 4 no site original.
 - **Organização:** `flats/flat-N/NN.jpg` na ordem do site original; fachadas em `areas-externas/`.
 - **Duplicatas:** a mesma foto de fachada aparece nas galerias dos Flats 5–8; outra fachada nos Flats 2–3. No novo site elas aparecem só uma vez, em “Fachadas”.
 - **Observação:** as fotos indicam **duas edificações** (Flats 1–3 em um prédio de estilo industrial; Flats 5–8 em outro, com varandas). Ver pendências.
-- **Logo:** SVG vetorial (folha + “Flat Jardim Serrano”). Criadas versões sem fundo (`logo-transparente.svg`) e recortada (`logo-horizontal.svg`).
+- **Logo:** SVG vetorial (folha + “Flat Jardim Serrano”), com uma versão para cada tema (`logo-claro.svg` e `logo-escuro.svg`).
 
 ## Informações comerciais
 
