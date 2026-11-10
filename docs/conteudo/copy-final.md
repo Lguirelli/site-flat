@@ -77,7 +77,7 @@ Textos publicados no modelo inicial, por seção. As fontes da verdade no códig
 ## 04 · Galeria
 
 - **Título:** Veja os ambientes antes de escolher.
-- **Texto:** Fotos reais de cada flat, identificadas por unidade. Toque em uma imagem para ampliar.
+- **Texto:** Fotos de cada flat, identificadas por unidade e com tratamento visual cinematográfico. Toque em uma imagem para ampliar.
 - **Filtros:** Destaques · Flat 1 … Flat 8 · Fachadas
 
 ## 05 · Comodidades

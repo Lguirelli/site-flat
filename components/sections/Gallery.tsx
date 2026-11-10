@@ -107,7 +107,7 @@ export function Gallery() {
   return (
     <Reveal as="section" id="galeria" className="gallery" aria-labelledby="galeria-title">
       <div className="frame gallery__head">
-        <Lines id="galeria-title" lines={["Fotos reais"]} />
+        <Lines id="galeria-title" lines={["Galeria de fotos"]} />
         <p className="gallery__count" data-r>
           {items.length} fotos
         </p>

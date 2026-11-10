@@ -14,7 +14,7 @@ Site de hospedagem para os sete flats do **Flat Jardim Serrano**, em Serra Negra
 - **Seletor de flats.** O visitante marca o que não pode faltar (varanda, vista, fogão, Netflix, blackout…), vê quais flats têm tudo e consulta só esses.
 - **Modo claro e escuro.** Segue a preferência do sistema, troca pelo botão do cabeçalho e lembra a escolha. Não pisca na troca porque o tema é aplicado antes da pintura.
 - **Animações com propósito.** O título entra linha a linha, as fotos abrem como um obturador e cada seção chega em sequência. Os botões respondem ao toque. Tudo respeita `prefers-reduced-motion`.
-- **Conteúdo real.** O site mostra fotos de cada unidade e as regras e condições publicadas pelo próprio estabelecimento. Não há avaliações, preços ou disponibilidade inventados.
+- **Conteúdo da hospedagem.** O site apresenta fotos de referência de cada unidade, incluindo imagens com tratamento de cor e algumas recriações cinematográficas, além de regras e condições publicadas pelo próprio estabelecimento. Não há avaliações, preços ou disponibilidade inventados.
 - **Responsivo e acessível.** O layout próprio para celular tem barra de reserva fixa. Usa `<dialog>` nativo, foco visível, textos alternativos em todas as fotos e navegação por teclado.
 - **SEO.** Metadados por página, Open Graph e JSON-LD (`LodgingBusiness`). As páginas dos flats são geradas estaticamente.
 
@@ -26,12 +26,16 @@ Site de hospedagem para os sete flats do **Flat Jardim Serrano**, em Serra Negra
 
 ![Rodapé com a chamada de reserva, informações práticas e os flats](docs/screenshots/rodape-escuro.jpg)
 
+## Observação sobre as fotografias
+
+As imagens foram editadas para apresentação cinematográfica: parte recebeu correção tonal e ampliação de resolução, e parte foi recriada com IA a partir das fotografias de referência. Antes de publicar comercialmente, confira se cada imagem representa fielmente os ambientes e comodidades reais.
+
 ## Tecnologia
 
 - [Next.js 15](https://nextjs.org) (App Router) + React 19 + TypeScript
 - CSS próprio, sem framework nem biblioteca de animação
 - Fontes Imbue e Albert Sans via `next/font`
-- Imagens otimizadas com `next/image` (AVIF/WebP)
+- Imagens exibidas por `next/image` com loader para exportação estática (arquivos JPG originais do pacote, sem conversão automática para AVIF/WebP)
 
 ## Rodar localmente
 
